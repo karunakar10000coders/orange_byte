@@ -1,0 +1,19 @@
+{
+  "name": "orange-bites",
+  "version": "1.0.0",
+  "description": "Modern mobile-first food delivery app",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx browser-sync start --server --files \"*.*\""
+  },
+  "keywords": [
+    "food-delivery",
+    "mobile-first",
+    "vanilla-js"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.2"
+  }
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrangeBites | Modern Food Delivery App</title>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Feather Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+
+  <!-- Background decorations for desktop view to make it look premium -->
+  <div class="bg-decor bg-decor-1"></div>
+  <div class="bg-decor bg-decor-2"></div>
+
+  <!-- Main Device Frame Wrapper -->
+  <div class="device-wrapper">
+    <div class="device-notch"></div>
+    <div class="device-status-bar">
+      <span class="status-time" id="status-time">15:12</span>
+      <div class="status-icons">
+        <i data-feather="wifi" class="status-icon"></i>
+        <i data-feather="battery" class="status-icon"></i>
+      </div>
+    </div>
+
+    <!-- App Container -->
+    <div class="app-container">
+      
+      <!-- App Header -->
+      <header class="app-header" id="app-header">
+        <button class="back-btn" id="header-back-btn" aria-label="Go back">
+          <i data-feather="chevron-left"></i>
+        </button>
+        <div class="header-title-container">
+          <h1 class="header-title" id="header-title">OrangeBites</h1>
+          <p class="header-subtitle" id="header-subtitle">Delivery in 25 mins</p>
+        </div>
+        <button class="cart-shortcut-btn" id="header-cart-btn" aria-label="View Cart">
+          <i data-feather="shopping-bag"></i>
+          <span class="cart-badge-count hidden" id="header-cart-badge">0</span>
+        </button>
+      </header>
+
+      <!-- App Content Screens -->
+      <main class="app-main-content">
+
+        <!-- 1. HOME SCREEN -->
+        <section id="screen-home" class="app-screen active">
+          <!-- Welcome and Location Bar -->
+          <div class="location-bar">
+            <div class="location-details">
+              <i data-feather="map-pin" class="pin-icon"></i>
+              <div>
+                <span class="location-label">Deliver to</span>
+                <div class="location-select">
+                  <span id="current-location">123 Foodie Lane, Gourmet City</span>
+                  <i data-feather="chevron-down" class="select-arrow"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Promo Banner Card -->
+          <div class="promo-banner">
+            <div class="promo-content">
+              <span class="promo-tag">Special Offer</span>
+              <h3>Get 50% Off Your First Order!</h3>
+              <p>Use code: <strong>ORANGE50</strong></p>
+              <button class="promo-btn">Order Now</button>
+            </div>
+            <div class="promo-image-container">
+              <img src="assets/food_banner.png" alt="Delicious Food Offer" class="promo-img">
+            </div>
+          </div>
+
+          <!-- Food Categories -->
+          <div class="category-section">
+            <h2 class="section-title">What are you craving?</h2>
+            <div class="category-list">
+              <div class="category-card active" data-category="all">
+                <div class="category-icon-wrapper">🍔</div>
+                <span>All</span>
+              </div>
+              <div class="category-card" data-category="burgers">
+                <div class="category-icon-wrapper">🍔</div>
+                <span>Burgers</span>
+              </div>
+              <div class="category-card" data-category="pizza">
+                <div class="category-icon-wrapper">🍕</div>
+                <span>Pizza</span>
+              </div>
+              <div class="category-card" data-category="asian">
+                <div class="category-icon-wrapper">🍜</div>
+                <span>Asian</span>
+              </div>
+              <div class="category-card" data-category="healthy">
+                <div class="category-icon-wrapper">🥗</div>
+                <span>Healthy</span>
+              </div>
+              <div class="category-card" data-category="desserts">
+                <div class="category-icon-wrapper">🍰</div>
+                <span>Desserts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Restaurant List -->
+          <div class="restaurants-section">
+            <div class="section-header">
+              <h2 class="section-title">Popular Restaurants</h2>
+              <span class="see-all">See All</span>
+            </div>
+            <div class="restaurants-list-container" id="restaurants-list">
+              <!-- Rendered dynamically by JavaScript -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. RESTAURANT MENU SCREEN -->
+        <section id="screen-menu" class="app-screen">
+          <div class="restaurant-banner" id="menu-restaurant-banner">
+            <!-- Dynamic background -->
+          </div>
+          <div class="restaurant-details-card">
+            <div class="menu-rating-time">
+              <span class="menu-rating"><i data-feather="star" class="fill-star"></i> <span id="menu-restaurant-rating">4.8</span></span>
+              <span class="menu-delivery-time"><i data-feather="clock"></i> <span id="menu-restaurant-time">25 mins</span></span>
+            </div>
+            <h2 class="menu-restaurant-name" id="menu-restaurant-name">Restaurant Name</h2>
+            <p class="menu-restaurant-cuisine" id="menu-restaurant-cuisine">Burgers • American • Gourmet</p>
+          </div>
+
+          <div class="menu-items-section">
+            <h3 class="section-title">Menu Items</h3>
+            <div class="menu-items-list" id="menu-items-list">
+              <!-- Rendered dynamically by JavaScript -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. CART SCREEN -->
+        <section id="screen-cart" class="app-screen">
+          <div class="cart-items-container" id="cart-items-list">
+            <!-- Rendered dynamically by JavaScript -->
+          </div>
+
+          <!-- Cart Empty State -->
+          <div class="empty-state hidden" id="cart-empty-state">
+            <div class="empty-icon-wrapper">
+              <i data-feather="shopping-bag" class="empty-icon"></i>
+            </div>
+            <h3>Your Cart is Empty</h3>
+            <p>Add items from your favorite restaurants to start a new order!</p>
+            <button class="primary-btn return-home-btn">Browse Restaurants</button>
+          </div>
+
+          <!-- Order Summary Pricing Card -->
+          <div class="price-summary-card" id="cart-price-summary">
+            <h3>Bill Details</h3>
+            <div class="price-row">
+              <span>Item Total</span>
+              <span id="price-subtotal">$0.00</span>
+            </div>
+            <div class="price-row">
+              <span>Delivery Fee</span>
+              <span id="price-delivery">$2.00</span>
+            </div>
+            <div class="price-row">
+              <span>Taxes & charges</span>
+              <span id="price-tax">$1.50</span>
+            </div>
+            <hr class="price-divider">
+            <div class="price-row total-row">
+              <span>To Pay</span>
+              <span id="price-grand-total">$3.50</span>
+            </div>
+            
+            <button class="primary-btn checkout-proceed-btn" id="btn-to-checkout">
+              <span>Proceed to Checkout</span>
+              <i data-feather="arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 4. CHECKOUT SCREEN -->
+        <section id="screen-checkout" class="app-screen">
+          <div class="checkout-form-container">
+            <div class="checkout-section-card">
+              <h3><i data-feather="user" class="section-card-icon"></i> Contact Details</h3>
+              <div class="form-group">
+                <label for="input-name">Full Name</label>
+                <div class="input-wrapper">
+                  <i data-feather="user" class="input-icon"></i>
+                  <input type="text" id="input-name" placeholder="John Doe" required>
+                </div>
+                <span class="validation-error" id="error-name">Please enter your name</span>
+              </div>
+              <div class="form-group">
+                <label for="input-phone">Phone Number</label>
+                <div class="input-wrapper">
+                  <i data-feather="phone" class="input-icon"></i>
+                  <input type="tel" id="input-phone" placeholder="+1 (555) 019-2834" required>
+                </div>
+                <span class="validation-error" id="error-phone">Please enter a valid phone number</span>
+              </div>
+            </div>
+
+            <div class="checkout-section-card">
+              <h3><i data-feather="map-pin" class="section-card-icon"></i> Delivery Address</h3>
+              <div class="form-group">
+                <label for="input-address">Address Line 1</label>
+                <div class="input-wrapper">
+                  <i data-feather="home" class="input-icon"></i>
+                  <input type="text" id="input-address" placeholder="123 Foodie Lane, Apt 4B" required>
+                </div>
+                <span class="validation-error" id="error-address">Please enter your address</span>
+              </div>
+            </div>
+
+            <div class="checkout-section-card">
+              <h3><i data-feather="credit-card" class="section-card-icon"></i> Payment Method</h3>
+              <div class="payment-options">
+                <div class="payment-option-card active" data-payment="cod">
+                  <div class="payment-option-radio">
+                    <span class="radio-dot"></span>
+                  </div>
+                  <div class="payment-option-details">
+                    <strong>Cash on Delivery (COD)</strong>
+                    <span>Pay with cash or card at your door</span>
+                  </div>
+                </div>
+                <div class="payment-option-card disabled" data-payment="card">
+                  <div class="payment-option-radio">
+                    <span class="radio-dot"></span>
+                  </div>
+                  <div class="payment-option-details">
+                    <strong>Credit/Debit Card (Unavailable)</strong>
+                    <span>Online payment disabled in demo mode</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Bottom Order Placement Bar -->
+          <div class="checkout-actions-card">
+            <div class="checkout-final-total">
+              <span>Total Amount</span>
+              <strong id="checkout-amount">$0.00</strong>
+            </div>
+            <button class="primary-btn place-order-btn" id="btn-place-order">
+              <span>Place Order</span>
+              <i data-feather="check-circle"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 5. ORDER SUCCESS SCREEN -->
+        <section id="screen-success" class="app-screen">
+          <div class="success-illustration-wrapper">
+            <div class="success-ring-outer"></div>
+            <div class="success-ring-inner"></div>
+            <div class="success-icon-bg">
+              <i data-feather="check" class="success-check-icon"></i>
+            </div>
+          </div>
+          
+          <h2 class="success-title">Order Placed Successfully!</h2>
+          <p class="success-description">Your food is being prepared with love and will arrive shortly.</p>
+
+          <div class="order-details-card">
+            <div class="order-info-row">
+              <span>Order Number</span>
+              <strong id="success-order-number">#OB-94821</strong>
+            </div>
+            <div class="order-info-row">
+              <span>Est. Delivery Time</span>
+              <strong>25 - 35 mins</strong>
+            </div>
+            <div class="order-info-row">
+              <span>Deliver To</span>
+              <span id="success-delivery-address" class="text-right-aligned">123 Foodie Lane</span>
+            </div>
+          </div>
+
+          <!-- Order Tracking Steps (Visual Demo) -->
+          <div class="delivery-tracker">
+            <div class="tracker-step completed">
+              <div class="tracker-bullet">
+                <i data-feather="check" class="tracker-check"></i>
+              </div>
+              <div class="tracker-content">
+                <strong>Order Confirmed</strong>
+                <span>Received by restaurant</span>
+              </div>
+            </div>
+            <div class="tracker-step active">
+              <div class="tracker-bullet"></div>
+              <div class="tracker-content">
+                <strong>Preparing Food</strong>
+                <span>Chef is preparing your meal</span>
+              </div>
+            </div>
+            <div class="tracker-step">
+              <div class="tracker-bullet"></div>
+              <div class="tracker-content">
+                <strong>Out for Delivery</strong>
+                <span>Driver picking up order</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="primary-btn success-home-btn" id="btn-success-home">
+            <span>Order Something Else</span>
+            <i data-feather="home"></i>
+          </button>
+        </section>
+
+      </main>
+
+      <!-- Bottom Navigation Bar -->
+      <nav class="bottom-nav" id="bottom-nav">
+        <button class="nav-item active" id="nav-home" data-screen="home">
+          <i data-feather="home" class="nav-icon"></i>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" id="nav-cart" data-screen="cart">
+          <div class="nav-icon-container">
+            <i data-feather="shopping-bag" class="nav-icon"></i>
+            <span class="nav-badge-count hidden" id="nav-cart-badge">0</span>
+          </div>
+          <span class="nav-label">Cart</span>
+        </button>
+        <button class="nav-item" id="nav-orders" data-screen="orders-list">
+          <i data-feather="clipboard" class="nav-icon"></i>
+          <span class="nav-label">Orders</span>
+        </button>
+      </nav>
+
+    </div> <!-- /app-container -->
+  </div> <!-- /device-wrapper -->
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
